@@ -112,6 +112,6 @@ function displayFlesch() {
   } else if (fleschValue < 0) {
     flesch.innerHTML = 0;
   } else {
-    esch.innerHTML = getFleschInfo(text).flesch;
+    fesch.innerHTML = getFleschInfo(text).flesch;
   }
 }
