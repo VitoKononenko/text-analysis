@@ -40,7 +40,7 @@ function getParagraphs(text) {
       validParagraphs.push(paragraphsArray[paragraphsArrayLength]);
     }
   }
-  console.log('validParagraphs', validParagraphs)
+
   validParagraphs.forEach(generateHTMLReport)
 
   return validParagraphs;
