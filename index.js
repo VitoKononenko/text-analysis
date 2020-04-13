@@ -2,6 +2,7 @@ let textarea = document.getElementById('flesch-text');
 let button = document.getElementById('flesch-submit');
 let flesch = document.getElementById('flesch-value');
 let textParseInfo = document.getElementById('text-parse-info');
+let paragraphCount = document.getElementById('paragraph-count');
 
 function calculateFlesch(totalSentences, totalWords, totalSyllables) {
   return (206.835 - (1.015 * (totalWords / totalSentences)) - (84.6 * (totalSyllables / totalWords)));
@@ -42,7 +43,7 @@ function getParagraphs(text) {
   console.log('validParagraphs', validParagraphs)
   validParagraphs.forEach(generateHTMLReport)
 
-  return validParagraphs.length;
+  return validParagraphs;
 }
 
 function generateHTMLReport(paragraph, index) {
@@ -83,7 +84,8 @@ function getWords(text) {
 
 function getFleschInfo(text) {
   let totalSentences = 0, totalWords = 0, totalSyllables = 0;
-  getParagraphs(text);
+  const paragraphsAmount = getParagraphs(text).length;
+  paragraphCount.innerHTML = paragraphsAmount;
   let sentences = getSentances(text);
   totalSentences = sentences.length;
   sentences.forEach(function (sentence) {
