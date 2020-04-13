@@ -106,5 +106,12 @@ function displayFlesch() {
   let text = textarea.value
 
   textParseInfo.innerHTML = "";
-  flesch.innerHTML = getFleschInfo(text).flesch;
+  const fleschValue = getFleschInfo(text).flesch;
+  if (fleschValue > 100) {
+    flesch.innerHTML = 100;
+  } else if (fleschValue < 0) {
+    flesch.innerHTML = 0;
+  } else {
+    esch.innerHTML = getFleschInfo(text).flesch;
+  }
 }
