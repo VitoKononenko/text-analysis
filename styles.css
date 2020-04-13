@@ -13,10 +13,19 @@ textarea {
   min-height: 48vh;
   display: block;
   resize: none;
+  width: 100%;
+  font-size: 16px;
 }
 
 button {
-  display: block;
+  margin: 10px 0;
+  padding: 5px 10px;
+  background: #3366ff;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .sentence {
@@ -28,7 +37,7 @@ button {
 }
 
 .sentence b {
-  color: brown
+  color: brown;
 }
 
 .text-report {
