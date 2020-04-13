@@ -39,7 +39,7 @@ function getParagraphs(text) {
       validParagraphs.push(paragraphsArray[paragraphsArrayLength]);
     }
   }
-
+  console.log('validParagraphs', validParagraphs)
   validParagraphs.forEach(generateHTMLReport)
 
   return validParagraphs.length;
@@ -112,6 +112,6 @@ function displayFlesch() {
   } else if (fleschValue < 0) {
     flesch.innerHTML = 0;
   } else {
-    flesch.innerHTML = getFleschInfo(text).flesch;
+    flesch.innerHTML = fleschValue;
   }
 }
