@@ -56,12 +56,12 @@ function generateHTMLReport(paragraph, index) {
   const sentancesElem = document.createElement('b');
   const wordsElem = document.createElement('b');
   const sentancesBlock = document.createElement('div');
-  sentancesBlock.className = "sentance";
-  sentances.forEach(function(sentance, index) {
+  sentancesBlock.className = "sentence";
+  sentances.forEach(function(sentence, index) {
     const sencanceElem = document.createElement('p');
     const sentanceWordsElem = document.createElement('b');
-    sentanceWordsElem.textContent = ` (words count: ${getWords(sentance).length})`;
-    sencanceElem.textContent = `${index + 1}. ${sentance}`
+    sentanceWordsElem.textContent = ` (words count: ${getWords(sentence).length})`;
+    sencanceElem.textContent = `${index + 1}. ${sentence}`
     sencanceElem.appendChild(sentanceWordsElem);
     sentancesBlock.appendChild(sencanceElem);
   })

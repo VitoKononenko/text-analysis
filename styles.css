@@ -1,5 +1,8 @@
 .paragraph {
-  border-bottom: solid 1px grey;
+  border: solid 1px grey;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 body {
@@ -14,4 +17,16 @@ textarea {
 
 button {
   display: block;
+}
+
+.sentence {
+  border: solid 1px grey;
+  border-radius: 5px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
+}
+
+.sentence b {
+  color: brown
 }
