@@ -1,0 +1,20 @@
+<html>
+
+<head>
+  <title>Text Analyzer</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+  <h1>Flesch-Kincaid Readibility Test</h1>
+  <textarea id="flesch-text" placeholder="Write your text here..." style="min-width: 300px; min-height: 400px;">
+</textarea> <button id="flesch-submit" onclick="displayFlesch()">Get Text Info</button>
+
+  <h2>Results</h2>
+  <p>Your readability score is <b id="flesch-value"></b></p>
+  <h3>Paragraphs data: </h3>
+  <div id="text-parse-info"></div>
+  <script src="./index.js"></script>
+</body>
+
+</html>

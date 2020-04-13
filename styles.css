@@ -1,0 +1,17 @@
+.paragraph {
+  border-bottom: solid 1px grey;
+}
+
+body {
+  padding: 1.25em 2em;
+}
+
+textarea {
+  min-height: 48vh;
+  display: block;
+  resize: none;
+}
+
+button {
+  display: block;
+}
