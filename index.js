@@ -26,24 +26,14 @@ function getSentances(text) {
 }
 
 function getParagraphs(text) {
-  let paragraphsArray = text.split("\n\n").reverse();
-  let validParagraphs = [];
-  let paragraphsArrayLength = paragraphsArray.length;
-  let strip_whitespace = /\s+/gi;
-  let i = 0;
-  while (paragraphsArrayLength >= 0) {
-    i++;
-    paragraphsArrayLength--;
-    let tmp = paragraphsArray[paragraphsArrayLength];
-    tmp = tmp ? tmp.replace(strip_whitespace, "") : tmp;
-    if (tmp && tmp.length > 1) {
-      validParagraphs.push(paragraphsArray[paragraphsArrayLength]);
+  const paragraphsArray = text.split("\n\n");
+  const strip_whitespace = /\s+/gi;
+  return paragraphsArray.filter(function(paragraph) {
+    const trimmedParagraph = paragraph.replace(strip_whitespace, "");
+    if (trimmedParagraph && trimmedParagraph.length > 1) {
+      return paragraph;
     }
-  }
-
-  validParagraphs.forEach(generateHTMLReport)
-
-  return validParagraphs;
+  });
 }
 
 function generateHTMLReport(paragraph, index) {
@@ -84,8 +74,9 @@ function getWords(text) {
 
 function getFleschInfo(text) {
   let totalSentences = 0, totalWords = 0, totalSyllables = 0;
-  const paragraphsAmount = getParagraphs(text).length;
-  paragraphCount.innerHTML = paragraphsAmount;
+  const paragraphs = getParagraphs(text);
+  const paragraphsAmount = paragraphs.length;
+
   let sentences = getSentances(text);
   totalSentences = sentences.length;
   sentences.forEach(function (sentence) {
@@ -100,6 +91,8 @@ function getFleschInfo(text) {
     totalSentences,
     totalWords,
     totalSyllables,
+    paragraphs,
+    paragraphsAmount,
     flesch: Math.round(calculateFlesch(totalSentences, totalWords, totalSyllables), 2)
   }
 }
@@ -108,7 +101,8 @@ function displayFlesch() {
   let text = textarea.value
 
   textParseInfo.innerHTML = "";
-  const fleschValue = getFleschInfo(text).flesch;
+  const textData = getFleschInfo(text);
+  const fleschValue = textData.flesch;
   if (fleschValue > 100) {
     flesch.innerHTML = 100;
   } else if (fleschValue < 0) {
@@ -116,4 +110,7 @@ function displayFlesch() {
   } else {
     flesch.innerHTML = fleschValue;
   }
+
+  paragraphCount.innerHTML = textData.paragraphsAmount;
+  textData.paragraphs.forEach(generateHTMLReport)
 }
